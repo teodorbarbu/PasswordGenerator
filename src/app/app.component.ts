@@ -9,8 +9,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  onButtonClick() {
-    console.log('Button was clicked');
-  }
   title = 'PasswordGenerator';
+
+  password = '';
+
+  onButtonClick() {
+    this.password = 'MY PASSWORD!!!';
+  }
+  getPassword() {
+    return this.password;
+  }
 }
