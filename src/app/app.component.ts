@@ -11,10 +11,19 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'PasswordGenerator';
 
+  length = 0;
   includeLetters = false;
   includeNumbers = false;
   includeSymbols = false;
   password = '';
+
+  onChangeLength(value: string) {
+    const parsedValue = parseInt(value);
+
+    if (!isNaN(parsedValue)) {
+      this.length = parsedValue;
+    }
+  }
 
   onChangeUseLetters() {
     this.includeLetters = !this.includeLetters;
