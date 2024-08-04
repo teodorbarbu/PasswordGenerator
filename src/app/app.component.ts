@@ -38,16 +38,28 @@ export class AppComponent {
   }
 
   onButtonClick() {
-    console.log(`
-    About to generate a password with the following:
-    Includes letters: ${this.includeLetters}
-    Includes numbers: ${this.includeNumbers}
-    Includes Symbols: ${this.includeSymbols}
-    `);
+    const numbers = '1234567890';
+    const letters = 'abcdefghijklmnopqrstuvwyz';
+    const symbols = '!@#$%^&*()';
 
-    this.password = 'MY PASSWORD!!!';
-  }
-  getPassword() {
-    return this.password;
+    let validChars = '';
+    if (this.includeLetters) {
+      validChars += letters;
+    }
+    if (this.includeNumbers) {
+      validChars += numbers;
+    }
+    if (this.includeSymbols) {
+      validChars += symbols;
+    }
+
+    let generatedPassword = '';
+    for (let i = 0; i < this.length; i++) {
+      const index = Math.floor(Math.random() * validChars.length);
+      generatedPassword += validChars[index];
+    }
+    this.password = generatedPassword;
+
+    //this.password = 'MY PASSWORD!!!';
   }
 }
